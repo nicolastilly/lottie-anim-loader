@@ -1,0 +1,1 @@
+# Animation au format Lottie
