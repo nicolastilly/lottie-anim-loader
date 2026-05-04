@@ -15,6 +15,9 @@
     <p class="loader-text">Chargement…</p>
   </div>
 
+<!--
+aria-busy est une information destinée à l’accessibilité. Elle ne gère pas l’affichage. Le CSS masque le contenu, JavaScript change l’état de la page, et aria-busy indique que le contenu principal devient prêt une fois le loader terminé.  
+-->
   <!-- Contenu principal du site -->
   <main id="main-content" class="main-content" aria-busy="true">
     <section class="hero">
