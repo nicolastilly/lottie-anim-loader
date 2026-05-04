@@ -5,7 +5,7 @@ const loaderScreen = document.querySelector("#loader-screen");
 const loaderAnimation = lottie.loadAnimation({
   container: loaderContainer,
   renderer: "svg",
-  loop: 1,               // L’animation sera jouée 2 fois
+  loop: 2,               // L’animation sera jouée 2 fois
   autoplay: true,
   path: "animation.json"
 });
