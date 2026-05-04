@@ -1,5 +1,7 @@
 # Animation au format Lottie
 
+![capture](capture.gif)
+
 **Consignes de l’exercice :**
 
 - Réaliser **une animation courte en utilisant le [1er principe Squash & Stretch](https://youtu.be/uDqjIdI4bF4?si=0vsnphouqZ-nDurX&t=11)** avec After Effects ou [Cavalry](https://cavalry.studio/fr_fr/) (la démo du cours se fait avec [Cavalry](https://cavalry.studio/fr_fr/))
