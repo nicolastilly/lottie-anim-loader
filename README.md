@@ -11,4 +11,7 @@
 
 >> Nous n’utilisons pas Lottie comme une vidéo décorative, mais comme un état temporaire d’interface. L’animation accompagne le chargement, puis déclenche une transformation de la page lorsque sa timeline se termine.
 
-![capture](capture.gif)
+
+<p align="center">
+  <img src="capture.gif" alt="capture"/>
+</p>
