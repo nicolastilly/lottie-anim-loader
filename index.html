@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lottie démo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="is-loading">
+
+  <!-- Écran de chargement -->
+  <div id="loader-screen" class="loader-screen" role="status" aria-live="polite">
+    <div id="lottie-loader" class="lottie-loader"></div>
+    <p class="loader-text">Chargement…</p>
+  </div>
+
+  <!-- Contenu principal du site -->
+  <main id="main-content" class="main-content" aria-busy="true">
+    <section class="hero">
+      <h1>Slide 01</h1>
+      <p>
+        Le contenu apparaît une fois l’animation Lottie terminée.
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

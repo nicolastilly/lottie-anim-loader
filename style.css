@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #111;
+  color: white;
+}
+
+/* Écran de chargement plein écran */
+.loader-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 24px;
+
+  background: #111;
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+/* Taille de l’animation Lottie */
+.lottie-loader {
+  width: 320px;
+  height: 320px;
+}
+
+/* Texte optionnel sous l’animation */
+.loader-text {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Contenu principal masqué au départ */
+.main-content {
+  min-height: 100vh;
+
+  opacity: 0;
+  transform: translateY(24px);
+
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* État final : le site est chargé */
+body.is-loaded .loader-screen {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.is-loaded .main-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 5rem);
+}
