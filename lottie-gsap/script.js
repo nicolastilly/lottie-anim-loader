@@ -5,15 +5,42 @@ const loaderScreen = document.querySelector("#loader-screen");
 const mainContent = document.querySelector("#main-content");
 const transitionPanel = document.querySelector(".transition-panel");
 
+// Nouvelle animation Lottie de fond
+const backgroundLottieContainer = document.querySelector("#background-lottie");
+
 let contentIsShown = false;
 
-// Chargement de l’animation Lottie
+// Chargement de l’animation Lottie du loader
 const loaderAnimation = lottie.loadAnimation({
   container: loaderContainer,
   renderer: "svg",
-  loop: 1,                 // L’animation est jouée 2 fois
+  loop: 1,                 // Nombre de lectures de l’animation
   autoplay: true,
-  path: "../animation.json"
+  path: "logo.json"
+});
+
+// Vitesse de l'animation du loader
+// 1 = vitesse normale
+loaderAnimation.setSpeed(1.4);
+
+// Chargement de l’animation Lottie de fond
+const backgroundAnimation = lottie.loadAnimation({
+  container: backgroundLottieContainer,
+  renderer: "svg",
+  loop: 1,
+  autoplay: false,         // Elle démarrera seulement au moment où le contenu apparaît
+  path: "logo-slide01.json"
+});
+
+// Vitesse de l’animation de fond
+backgroundAnimation.setSpeed(1);
+
+// État initial de l’animation de fond
+gsap.set(backgroundLottieContainer, {
+  xPercent: -50,
+  yPercent: -50,
+  scale: 1.15,
+  autoAlpha: 0
 });
 
 // Fonction appelée quand Lottie est terminée
@@ -60,30 +87,31 @@ function revealPage() {
   });
 
   tl
-    // 1. Petit impact sur le loader
-.to(loaderContainer, {
-  y: "-120vh",          // Le Lottie sort complètement par le haut
-  scale: 0.85,          // Optionnel : il rétrécit légèrement en sortant
-  opacity: 0,
-  duration: 0.9,
-  ease: "expo.in"
-})
+    // 1. Le Lottie principal sort par le haut de l’écran
+    .to(loaderContainer, {
+      y: "-120vh",
+      scale: 0.75,
+      opacity: 0,
+      duration: 0.7,
+      ease: "expo.in"
+    })
 
-    // 2. Disparition brutale du texte de chargement
+    // 2. Le texte de chargement disparaît en même temps
     .to(".loader-text", {
       y: -24,
       opacity: 0,
-      duration: 0.35
+      duration: 0.35,
+      ease: "expo.in"
     }, "<")
 
-    // 3. Le panneau blanc monte et recouvre l’écran
+    // 3. Le panneau monte et recouvre l’écran plus rapidement
     .to(transitionPanel, {
       yPercent: -100,
-      duration: 0.8,
-      ease: "expo.inOut"
-    }, "-=0.1")
+      duration: 0.5,
+      ease: "expo.in"
+    }, "-=0.25")
 
-    // 4. Le loader disparaît pendant le passage du panneau
+    // 4. Le loader screen disparaît pendant le passage du panneau
     .to(loaderScreen, {
       opacity: 0,
       duration: 0.2
@@ -94,14 +122,34 @@ function revealPage() {
       autoAlpha: 1
     })
 
-    // 6. Le panneau quitte l’écran vers le haut
+    // 6. On lance la Lottie de fond
+    .call(() => {
+      backgroundAnimation.play();
+    })
+
+    // 7. Apparition douce de la Lottie de fond
+    .fromTo(backgroundLottieContainer,
+      {
+        scale: 1.15,
+        autoAlpha: 0
+      },
+      {
+        scale: 1,
+        autoAlpha: 1,
+        duration: 1.4,
+        ease: "expo.out"
+      },
+      "<"
+    )
+
+    // 8. Le panneau quitte l’écran vers le haut
     .to(transitionPanel, {
       yPercent: -200,
-      duration: 0.9,
+      duration: 0.8,
       ease: "expo.inOut"
     })
 
-    // 7. Apparition du petit label
+    // 9. Apparition du petit label
     .fromTo(".eyebrow",
       {
         y: 24,
@@ -116,7 +164,7 @@ function revealPage() {
       "-=0.25"
     )
 
-    // 8. Apparition du titre ligne par ligne
+    // 10. Apparition du titre ligne par ligne
     .set(".split", {
       opacity: 1
     }, "<")
@@ -129,7 +177,7 @@ function revealPage() {
       ease: "expo.out"
     }, "<")
 
-    // 9. Apparition du paragraphe
+    // 11. Apparition du paragraphe
     .fromTo(".hero-text",
       {
         y: 32,
@@ -145,7 +193,7 @@ function revealPage() {
     );
 }
 
-// Quand l’animation Lottie arrive à sa fin
+// Quand l’animation Lottie du loader arrive à sa fin
 loaderAnimation.addEventListener("complete", showContent);
 
 // En cas d’erreur, on révèle quand même le contenu

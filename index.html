@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lottie démo</title>
     <link rel="stylesheet" href="style.css">
-</head>
+  </head>
 
-<body class="is-loading">
+  <body class="is-loading">
 
-  <!-- Écran de chargement -->
-  <div id="loader-screen" class="loader-screen" role="status" aria-live="polite">
-    <div id="lottie-loader" class="lottie-loader"></div>
-    <p class="loader-text">Chargement…</p>
-  </div>
+    <!-- Écran de chargement -->
+    <div id="loader-screen" class="loader-screen" role="status" aria-live="polite">
+      <div id="lottie-loader" class="lottie-loader"></div>
+      <p class="loader-text">Chargement…</p>
+    </div>
 
-<!--
+    <!--
 aria-busy est une information destinée à l’accessibilité. Elle ne gère pas l’affichage. Le CSS masque le contenu, JavaScript change l’état de la page, et aria-busy indique que le contenu principal devient prêt une fois le loader terminé.  
 -->
-  <!-- Contenu principal du site -->
-  <main id="main-content" class="main-content" aria-busy="true">
-    <section class="hero">
-      <h1>Slide 01</h1>
-      <p>
-        Le contenu apparaît une fois l’animation Lottie terminée.
-      </p>
-    </section>
-  </main>
+    <!-- Contenu principal du site -->
+    <main id="main-content" class="main-content" aria-busy="true">
+      <section class="hero">
+        <h1>Slide 01</h1>
+        <p>
+          Le contenu apparaît une fois l’animation Lottie terminée.
+        </p>
+      </section>
+    </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js"></script>
-  <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js"></script>
+    <script src="script.js"></script>
 
-</body>
+  </body>
+
 </html>
