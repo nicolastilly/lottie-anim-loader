@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Lottie + GSAP transition</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="is-loading">
+
+  <!-- Écran de chargement -->
+  <div id="loader-screen" class="loader-screen" role="status" aria-live="polite">
+    <div id="lottie-loader" class="lottie-loader"></div>
+    <p class="loader-text">Chargement…</p>
+  </div>
+
+  <!-- Panneau de transition GSAP -->
+  <div class="transition-panel"></div>
+
+  <!-- Contenu principal du site -->
+  <main id="main-content" class="main-content" aria-busy="true" inert>
+    <section class="hero">
+      <p class="eyebrow">Creative Coding / Lottie</p>
+
+      <h1 class="split">
+        Slide 01 — Le contenu apparaît après la fin de l’animation.
+      </h1>
+
+      <p class="hero-text">
+        Ici, Lottie déclenche la transition, puis GSAP prend le relais pour révéler l’interface.
+      </p>
+    </section>
+  </main>
+
+  <!-- Lottie -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.13.0/lottie.min.js"></script>
+
+  <!-- GSAP + SplitText -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+  <script src="script.js"></script>
+</body>
+</html>
